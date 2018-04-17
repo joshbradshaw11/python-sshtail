@@ -32,7 +32,7 @@ class SSHTailer(object):
 
     def connect(self):
         if self.verbose:
-            print "Connecting to %s..." % self.host
+            print('Connecting to %s...' % self.host)
         # connect to the host
         self.client = paramiko.SSHClient()
         self.client.load_system_host_keys()
@@ -43,7 +43,7 @@ class SSHTailer(object):
             self.client.connect(self.host, username=self.username)
 
         if self.verbose:
-            print "Opening remote file %s..." % self.remote_filename
+            print('Opening remote file %s...' % self.remote_filename)
         # open a connection to the remote file via SFTP
         self.sftp_client = self.client.open_sftp()
         
@@ -88,12 +88,12 @@ class SSHTailer(object):
     def disconnect(self):
         if self.sftp_client:
             if self.verbose:
-                print "Closing SFTP connection..."
+                print("Closing SFTP connection...")
             self.sftp_client.close()
             self.sftp_client = None
         if self.client:
             if self.verbose:
-                print "Closing SSH connection..."
+                print("Closing SSH connection...")
             self.client.close()
             self.client = None
 
